@@ -62,6 +62,10 @@ function simpleToRoman(num){
 app.get("/roman/:num_str?", function (req, res) {
   try{
     var num = parseInt(req.params.num_str);
+    if(isNaN(num)){
+      throw "Invalid num";
+    }
+    
     var num_roman = convertToRoman(num);
     res.json({"num" : num,  "roman" : num_roman});
   }
